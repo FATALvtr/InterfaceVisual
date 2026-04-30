@@ -91,8 +91,10 @@ public class Calculadora extends javax.swing.JFrame {
         jLabel3.setText("Super Calculadora Poderosa");
 
         txfNumero1.setBackground(new java.awt.Color(255, 255, 255));
+        txfNumero1.addActionListener(this::txfNumero1ActionPerformed);
 
         txfNumero2.setBackground(new java.awt.Color(255, 255, 255));
+        txfNumero2.addActionListener(this::txfNumero2ActionPerformed);
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Resultado:");
@@ -177,11 +179,12 @@ public class Calculadora extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txfNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbSubtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbMultiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbDividir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbSomar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbSomar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbSubtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbMultiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbDividir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -219,6 +222,14 @@ public class Calculadora extends javax.swing.JFrame {
     private void jbDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDividirActionPerformed
         calculadora("/");
     }//GEN-LAST:event_jbDividirActionPerformed
+
+    private void txfNumero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNumero1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfNumero1ActionPerformed
+
+    private void txfNumero2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNumero2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfNumero2ActionPerformed
 
     /**
      * @param args the command line arguments
