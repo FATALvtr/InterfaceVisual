@@ -163,6 +163,7 @@ public class ExemploComboBox extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Produto Cadastrado!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro: Item não cadastrado!");
+            throw new AssertionError();
         }
     }//GEN-LAST:event_jbSalvarActionPerformed
 
@@ -173,6 +174,7 @@ public class ExemploComboBox extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Produto excluido com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro: Item não pode ser excluido!");
+            throw new AssertionError();
         }
     }//GEN-LAST:event_jbExcluirActionPerformed
 
