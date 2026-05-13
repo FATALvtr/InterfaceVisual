@@ -28,6 +28,7 @@ public class MenuInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jbPlaneta = new javax.swing.JButton();
         jbCalculadora = new javax.swing.JButton();
         jbTriangulo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -35,12 +36,19 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Inicial");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbPlaneta.setBackground(new java.awt.Color(0, 0, 0));
+        jbPlaneta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/icons8-gravidade-100.png"))); // NOI18N
+        jbPlaneta.setBorder(null);
+        jbPlaneta.addActionListener(this::jbPlanetaActionPerformed);
+        getContentPane().add(jbPlaneta, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 100, -1));
 
         jbCalculadora.setBackground(new java.awt.Color(0, 0, 0));
         jbCalculadora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CalculadoraGreen.png"))); // NOI18N
@@ -66,6 +74,9 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenuItem2.setText("Lados Triangulos");
         jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
         jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Gravidade");
+        jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
 
@@ -101,6 +112,11 @@ public class MenuInicial extends javax.swing.JFrame {
         p.setVisible(true);
     }//GEN-LAST:event_jbTrianguloActionPerformed
 
+    private void jbPlanetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPlanetaActionPerformed
+        GravidadePeso g = new GravidadePeso();
+        g.setVisible(true);
+    }//GEN-LAST:event_jbPlanetaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -134,7 +150,9 @@ public class MenuInicial extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JButton jbCalculadora;
+    private javax.swing.JButton jbPlaneta;
     private javax.swing.JButton jbTriangulo;
     // End of variables declaration//GEN-END:variables
 }

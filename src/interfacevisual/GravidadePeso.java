@@ -89,6 +89,12 @@ public class GravidadePeso extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 255, 0));
         jLabel1.setText("Força Peso");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 255, 0));
@@ -105,6 +111,12 @@ public class GravidadePeso extends javax.swing.JFrame {
         jbCalcularPeso.addActionListener(this::jbCalcularPesoActionPerformed);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/PesoEspaço.gif"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,6 +203,22 @@ public class GravidadePeso extends javax.swing.JFrame {
                 System.out.println("Peso: "+peso+"\nPlaneta: "+planeta);
         }
     }//GEN-LAST:event_jbCalcularPesoActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        try {
+        java.awt.Desktop.getDesktop().browse(new java.net.URI("https://youtu.be/y-SlgDnW-fk?si=elo-mFy84T-qHlBP"));
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        try {
+        java.awt.Desktop.getDesktop().browse(new java.net.URI("https://us-prod.asyncgw.teams.microsoft.com/v1/c992d0dc-fe0b-479a-bcdb-778f4deda6ab/objects/0-eus-d13-fec41552fcfe25840f11439c50e10742/views/imgpsh_fullsize"));
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments

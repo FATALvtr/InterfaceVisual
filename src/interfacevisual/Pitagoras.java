@@ -105,6 +105,7 @@ public class Pitagoras extends javax.swing.JFrame {
         jPanel1.add(jlbResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 91, 154, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/PitagorasJuniorFull.gif"))); // NOI18N
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
