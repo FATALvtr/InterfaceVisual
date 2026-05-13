@@ -64,6 +64,7 @@ public class ExemploComboBox extends javax.swing.JFrame {
 
         txfProdutoSelecionado.setEditable(false);
         txfProdutoSelecionado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txfProdutoSelecionado.addActionListener(this::txfProdutoSelecionadoActionPerformed);
 
         jbSalvar.setBackground(new java.awt.Color(153, 255, 0));
         jbSalvar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -177,6 +178,10 @@ public class ExemploComboBox extends javax.swing.JFrame {
             throw new AssertionError();
         }
     }//GEN-LAST:event_jbExcluirActionPerformed
+
+    private void txfProdutoSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfProdutoSelecionadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfProdutoSelecionadoActionPerformed
 
     /**
      * @param args the command line arguments
