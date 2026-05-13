@@ -1,6 +1,9 @@
 package interfacevisual;
 
+import java.awt.Color;
+import java.lang.ref.Cleaner;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.SliderUI;
 
 /**
  *
@@ -17,37 +20,67 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
         initComponents();
     }
     public void dados(){
-        String funcionario = txfNomeFuncionario.getText();
-        System.out.println("Funcionario:\n"+funcionario);
-        String setorSelect = cbSetor.getSelectedItem().toString();
-        System.out.println("\nSetor:\n"+setorSelect);
-        
-        String beneficios = "";
-        if(ckbValeAlimento.isSelected())
-            beneficios+= "- Vale Alimentação\n";
-        if(ckbPlanoSaude.isSelected())
-            beneficios+= "- Plano de Saúde\n";
-        if(ckbValeTransporte.isSelected())
-            beneficios+= "- Vale Trasnporte\n";
-        if(ckbHomeOffice.isSelected())
-            beneficios+= "- Home Office\n";
-        else{
-            beneficios = "Nenhum beneficio atribuido!";
+        try {
+            String funcionario = "";
+            String turnoSelect = "";
+            String beneficios = "";
+            String nivelFinal = "";
+            String setorSelect = cbSetor.getSelectedItem().toString();
+             //pega o nome do funcionario
+            if (txfNomeFuncionario.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Digite o nome!");
+                    return;
+            }else{
+                funcionario = txfNomeFuncionario.getText();
+            }
+            //pega o item do combo box
+            //pega as seleções da checkbox
+            if(ckbValeAlimento.isSelected())
+                beneficios+= "- Vale Alimentação\n";
+            if(ckbPlanoSaude.isSelected())
+                beneficios+= "- Plano de Saúde\n";
+            if(ckbValeTransporte.isSelected())
+                beneficios+= "- Vale Trasnporte\n";
+            if(ckbHomeOffice.isSelected())
+                beneficios+= "- Home Office\n";
+            if (beneficios.equals("")) {
+                beneficios = "Nenhum beneficio atribuido!";
+            }
+
+            if(jrbManha.isSelected()){
+                turnoSelect = "Manhã";
+            }else if(jrbTarde.isSelected()){
+                turnoSelect = "Tarde";
+            }else if(jrbNoite.isSelected()){
+                turnoSelect = "Noite";
+            }else{
+                JOptionPane.showMessageDialog(null, "Selecione o Turno");
+            }
+
+            int nivel = sldNivel.getValue();
+            if (nivel > 0 && nivel <= 3) {
+                nivelFinal = "\nExperiencia:\nNivel:"+nivel+" | Junior";
+            } else if (nivel > 3 && nivel <= 6) {
+                nivelFinal = "\nExperiencia:\nNivel:"+nivel+" | Pleno";
+            } else if (nivel > 6 && nivel <= 10) {
+                nivelFinal = "\nExperiencia:\nNivel:"+nivel+" | Sênior";
+            } else {
+                JOptionPane.showMessageDialog(null, "Nivel de Experiencia nao selecionado!");
+            }
+            System.out.println("Funcionario:\n"+funcionario);
+
+            System.out.println("\nSetor:\n"+setorSelect);
+
+            System.out.println("\nTurno:\n"+turnoSelect);
+
+            System.out.println("\nBeneficios:\n"+beneficios);
+
+            System.out.println(nivelFinal);
+
+            System.out.println("------------------------------");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao cadastrar funcionario, tente mais tarde!");
         }
-        
-        String turnoSelect = "";
-        if(jrbManha.isSelected()){
-            turnoSelect = "Manhã";
-        }else if(jrbTarde.isSelected()){
-            turnoSelect = "Tarde";
-        }else if(jrbNoite.isSelected()){
-            turnoSelect = "Noite";
-        }else{
-            JOptionPane.showMessageDialog(null, "Selecione o Turno");
-        }
-        System.out.println("\nTurno:\n"+turnoSelect);
-        
-        System.out.println("\nBeneficios:\n"+beneficios);
         
     }
 
@@ -79,6 +112,12 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
         ckbValeAlimento = new javax.swing.JCheckBox();
         ckbPlanoSaude = new javax.swing.JCheckBox();
         ckbValeTransporte = new javax.swing.JCheckBox();
+        sldNivel = new javax.swing.JSlider();
+        jLabel8 = new javax.swing.JLabel();
+        lblExp = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Funcionário");
@@ -97,53 +136,55 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 204, 0));
         jLabel3.setText("Setor");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, -1));
 
         txfNomeFuncionario.addActionListener(this::txfNomeFuncionarioActionPerformed);
-        jPanel1.add(txfNomeFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 156, 300, -1));
+        jPanel1.add(txfNomeFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 300, -1));
 
         cbSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TI", "RH", "Financeiro", "Administrativo" }));
         cbSetor.addActionListener(this::cbSetorActionPerformed);
-        jPanel1.add(cbSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 156, 310, -1));
+        jPanel1.add(cbSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 300, -1));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/saveGreen.png"))); // NOI18N
         jButton1.setText("Salvar Cadastro");
         jButton1.addActionListener(this::jButton1ActionPerformed);
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 415, 169, 42));
 
         jSeparator1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 202, 208));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 230, 208));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 204, 0));
         jLabel5.setText("Nome do Funcionário");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 118, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 204, 0));
-        jLabel6.setText("Benefícios Desejados");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        jLabel6.setText("Nivel de Experiência");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
 
         bgTurno.add(jrbNoite);
         jrbNoite.setForeground(new java.awt.Color(51, 204, 0));
         jrbNoite.setText("Noite");
-        jPanel1.add(jrbNoite, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, -1, 30));
+        jPanel1.add(jrbNoite, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 204, 0));
         jLabel7.setText("Turno de Trabalho");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, 20));
 
         bgTurno.add(jrbManha);
         jrbManha.setForeground(new java.awt.Color(51, 204, 0));
         jrbManha.setText("Manhã");
-        jPanel1.add(jrbManha, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, 30));
+        jPanel1.add(jrbManha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, 30));
 
         bgTurno.add(jrbTarde);
         jrbTarde.setForeground(new java.awt.Color(51, 204, 0));
         jrbTarde.setText("Tarde");
-        jPanel1.add(jrbTarde, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, 30));
+        jPanel1.add(jrbTarde, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, 30));
 
         ckbHomeOffice.setForeground(new java.awt.Color(51, 204, 0));
         ckbHomeOffice.setText("Home Office");
@@ -162,14 +203,41 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
         ckbValeTransporte.setText("Vale Trasnporte");
         jPanel1.add(ckbValeTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
+        sldNivel.setForeground(new java.awt.Color(51, 204, 0));
+        sldNivel.setMajorTickSpacing(2);
+        sldNivel.setMaximum(10);
+        sldNivel.setPaintLabels(true);
+        sldNivel.setPaintTicks(true);
+        sldNivel.setValue(5);
+        sldNivel.addChangeListener(this::sldNivelStateChanged);
+        jPanel1.add(sldNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 204, 0));
+        jLabel8.setText("Benefícios Desejados");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        lblExp.setForeground(new java.awt.Color(51, 204, 0));
+        lblExp.setText("Experiência:");
+        jPanel1.add(lblExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, -1, -1));
+
+        jSeparator2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 210, 208));
+
+        jSeparator3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 98, 670, 90));
+
+        jSeparator4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 210, 208));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,6 +266,23 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
     private void ckbPlanoSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbPlanoSaudeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ckbPlanoSaudeActionPerformed
+
+    private void sldNivelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldNivelStateChanged
+        //pega o valor:
+        int nivelAtual = sldNivel.getValue();
+        //Atualiza a label:
+        lblExp.setText(String.valueOf("Experiência: "+nivelAtual));
+        if (nivelAtual > 0 && nivelAtual <= 3) {
+            lblExp.setForeground(Color.red);
+        }else if(nivelAtual > 3 && nivelAtual <= 6){
+            lblExp.setForeground(new java.awt.Color(255,102,0));
+        }else if(nivelAtual > 6 && nivelAtual <= 10){
+            lblExp.setForeground(new java.awt.Color(255,204,0));
+        }else{
+            lblExp.setForeground(Color.red);
+        }
+        
+    }//GEN-LAST:event_sldNivelStateChanged
 
     /**
      * @param args the command line arguments
@@ -238,11 +323,17 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JRadioButton jrbManha;
     private javax.swing.JRadioButton jrbNoite;
     private javax.swing.JRadioButton jrbTarde;
+    private javax.swing.JLabel lblExp;
+    private javax.swing.JSlider sldNivel;
     private javax.swing.JTextField txfNomeFuncionario;
     // End of variables declaration//GEN-END:variables
 }
