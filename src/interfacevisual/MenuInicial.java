@@ -28,6 +28,7 @@ public class MenuInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jbPlaneta = new javax.swing.JButton();
         jbCalculadora = new javax.swing.JButton();
         jbTriangulo = new javax.swing.JButton();
@@ -37,12 +38,19 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Inicial");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/icons8-convidado-masculino-100.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 100, 100));
 
         jbPlaneta.setBackground(new java.awt.Color(0, 0, 0));
         jbPlaneta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/icons8-gravidade-100.png"))); // NOI18N
@@ -76,7 +84,12 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Gravidade");
+        jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
         jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Cadastrar");
+        jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
+        jMenu1.add(jMenuItem4);
 
         jMenuBar1.add(jMenu1);
 
@@ -117,6 +130,21 @@ public class MenuInicial extends javax.swing.JFrame {
         g.setVisible(true);
     }//GEN-LAST:event_jbPlanetaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CadastroFuncionarios f = new CadastroFuncionarios();
+        f.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        CadastroFuncionarios f = new CadastroFuncionarios();
+        f.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        GravidadePeso g = new GravidadePeso();
+        g.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -143,6 +171,7 @@ public class MenuInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -151,6 +180,7 @@ public class MenuInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JButton jbCalculadora;
     private javax.swing.JButton jbPlaneta;
     private javax.swing.JButton jbTriangulo;

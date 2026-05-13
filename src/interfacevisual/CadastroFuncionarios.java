@@ -59,11 +59,11 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
 
             int nivel = sldNivel.getValue();
             if (nivel > 0 && nivel <= 3) {
-                nivelFinal = "\nExperiencia:\nNivel:"+nivel+" | Junior";
+                nivelFinal = "\nExperiencia:\nNivel: "+nivel+" | Junior";
             } else if (nivel > 3 && nivel <= 6) {
-                nivelFinal = "\nExperiencia:\nNivel:"+nivel+" | Pleno";
+                nivelFinal = "\nExperiencia:\nNivel: "+nivel+" | Pleno";
             } else if (nivel > 6 && nivel <= 10) {
-                nivelFinal = "\nExperiencia:\nNivel:"+nivel+" | Sênior";
+                nivelFinal = "\nExperiencia:\nNivel: "+nivel+" | Sênior";
             } else {
                 JOptionPane.showMessageDialog(null, "Nivel de Experiencia nao selecionado!");
             }
