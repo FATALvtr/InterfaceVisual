@@ -5,7 +5,7 @@
 package interfacevisual;
 
 import javax.swing.JOptionPane;
-
+import java.util.Random;
 /**
  *
  * @author 1094260
@@ -21,18 +21,41 @@ public class Games extends javax.swing.JFrame {
         initComponents();
     }
     public void dados(){
+        Random random = new Random();
         
-        int escolha = 0;
+        int jogada = 0;
+        int maquina = random.nextInt(3);
+        
         if (jrbPedra.isSelected()) {
-            escolha = 0;
+            jogada = 1;
         }else if(jrbPapel.isSelected()){
-            escolha = 1;
+            jogada = 2;
         }else if(jrbTesoura.isSelected()){
-            escolha = 3;
+            jogada = 3;
         }else{
-            JOptionPane.showMessageDialog(null, "Escolha uma opção");
+            JOptionPane.showMessageDialog(null, "SOLDADO! Escolha a sua ARMA!!!");
         }
         
+        if(jogada== 1 && maquina == 3){
+            JOptionPane.showMessageDialog(null, "Pedra Ataca Tesoura!");
+            JOptionPane.showMessageDialog(null, "Você venceu!");
+        }else if(jogada== 2 && maquina == 1){
+            JOptionPane.showMessageDialog(null, "Papel Ataca Pedra!");
+            JOptionPane.showMessageDialog(null, "Você venceu!");
+        }else if(jogada== 3 && maquina == 2){
+            JOptionPane.showMessageDialog(null, "Tesoura Ataca Papel!");
+            JOptionPane.showMessageDialog(null, "Você venceu!");
+        }else if(maquina == 1 && jogada== 3){
+            JOptionPane.showMessageDialog(null, "Tesoura Ataca Pedra!");
+            JOptionPane.showMessageDialog(null, "A maquina venceu!");
+        }else if(maquina == 2 && jogada== 1){
+            JOptionPane.showMessageDialog(null, "Pedra Ataca Papel!");
+            JOptionPane.showMessageDialog(null, "A maquina venceu!");
+        }else if(maquina == 3 && jogada== 2){
+            JOptionPane.showMessageDialog(null, "Tesoura Ataca Papel!");
+            JOptionPane.showMessageDialog(null, "A maquina venceu!");
+    }
+        return;
     }
 
     /**
@@ -44,6 +67,7 @@ public class Games extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgAtaques = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jrbPedra = new javax.swing.JRadioButton();
         jrbPapel = new javax.swing.JRadioButton();
@@ -59,15 +83,18 @@ public class Games extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        bgAtaques.add(jrbPedra);
         jrbPedra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jrbPedra.setForeground(new java.awt.Color(0, 0, 0));
         jrbPedra.addActionListener(this::jrbPedraActionPerformed);
         jPanel1.add(jrbPedra, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
 
+        bgAtaques.add(jrbPapel);
         jrbPapel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jrbPapel.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jrbPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
 
+        bgAtaques.add(jrbTesoura);
         jrbTesoura.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jrbTesoura.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jrbTesoura, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, -1, -1));
@@ -83,6 +110,7 @@ public class Games extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/icons8-espada-50.png"))); // NOI18N
         jButton1.setBorder(null);
+        jButton1.addActionListener(this::jButton1ActionPerformed);
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 60, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\1094260\\Downloads\\carregando.gif")); // NOI18N
@@ -113,6 +141,10 @@ public class Games extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbPedraActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dados();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -139,6 +171,7 @@ public class Games extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgAtaques;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

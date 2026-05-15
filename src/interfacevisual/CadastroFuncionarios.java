@@ -25,6 +25,7 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
             String turnoSelect = "";
             String beneficios = "";
             String nivelFinal = "";
+            //pega o item do combo box
             String setorSelect = cbSetor.getSelectedItem().toString();
              //pega o nome do funcionario
             if (txfNomeFuncionario.getText().trim().isEmpty()) {
@@ -33,7 +34,6 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
             }else{
                 funcionario = txfNomeFuncionario.getText();
             }
-            //pega o item do combo box
             //pega as seleções da checkbox
             if(ckbValeAlimento.isSelected())
                 beneficios+= "- Vale Alimentação\n";
@@ -46,7 +46,7 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
             if (beneficios.equals("")) {
                 beneficios = "Nenhum beneficio atribuido!";
             }
-
+            //pegar turno
             if(jrbManha.isSelected()){
                 turnoSelect = "Manhã";
             }else if(jrbTarde.isSelected()){
@@ -54,7 +54,7 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
             }else if(jrbNoite.isSelected()){
                 turnoSelect = "Noite";
             }else{
-                JOptionPane.showMessageDialog(null, "Selecione o Turno");
+                JOptionPane.showMessageDialog(null, "Selecione o Turno!");
             }
 
             int nivel = sldNivel.getValue();
@@ -67,17 +67,23 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Nivel de Experiencia nao selecionado!");
             }
-            System.out.println("Funcionario:\n"+funcionario);
-
-            System.out.println("\nSetor:\n"+setorSelect);
-
-            System.out.println("\nTurno:\n"+turnoSelect);
-
-            System.out.println("\nBeneficios:\n"+beneficios);
-
-            System.out.println(nivelFinal);
-
-            System.out.println("------------------------------");
+            JOptionPane.showMessageDialog(null, "Funcionario:\n"+funcionario+
+                    "\nSetor:\n"+setorSelect+
+                    "\nTurno:\n"+turnoSelect+
+                    "\nBeneficios:\n"+beneficios+
+                    nivelFinal
+                            , "Dados do Cadastro", , icon);
+//            System.out.println("Funcionario:\n"+funcionario);
+//
+//            System.out.println("\nSetor:\n"+setorSelect);
+//
+//            System.out.println("\nTurno:\n"+turnoSelect);
+//
+//            System.out.println("\nBeneficios:\n"+beneficios);
+//
+//            System.out.println(nivelFinal);
+//
+//            System.out.println("------------------------------");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao cadastrar funcionario, tente mais tarde!");
         }
@@ -194,6 +200,7 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
 
         ckbValeAlimento.setForeground(new java.awt.Color(51, 204, 0));
         ckbValeAlimento.setText("Vale Alimentação");
+        ckbValeAlimento.addActionListener(this::ckbValeAlimentoActionPerformed);
         jPanel1.add(ckbValeAlimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         ckbPlanoSaude.setForeground(new java.awt.Color(51, 204, 0));
@@ -293,6 +300,10 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
     private void jrbManhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbManhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbManhaActionPerformed
+
+    private void ckbValeAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbValeAlimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbValeAlimentoActionPerformed
 
     /**
      * @param args the command line arguments
